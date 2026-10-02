@@ -1,0 +1,362 @@
+<?xml version='1.0' encoding='utf-8'?>
+<project xmlns="http://www.plcopen.org/xml/tc6_0201" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  <fileHeader companyName="MPZ_AG" productName="Deaerator ST export" productVersion="1.0" creationDateTime="2026-10-02T00:00:00" />
+  <contentHeader name="Deaerator" modificationDateTime="2026-10-02T00:00:00">
+    <coordinateInfo>
+      <fbd>
+        <scaling x="1" y="1" />
+      </fbd>
+      <ld>
+        <scaling x="1" y="1" />
+      </ld>
+      <sfc>
+        <scaling x="1" y="1" />
+      </sfc>
+    </coordinateInfo>
+  </contentHeader>
+  <types>
+    <dataTypes />
+    <pous>
+      <pou name="FB_Deaerator" pouType="functionBlock">
+        <interface>
+          <inputVars>
+            <variable name="Enable">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="Stop">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="DrainRequest">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="CoolingEnable">
+              <type>
+                <BOOL />
+              </type>
+              <initialValue>
+                <simpleValue value="TRUE" />
+              </initialValue>
+            </variable>
+            <variable name="LevelPct">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="TemperatureC">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="PressureBar">
+              <type>
+                <REAL />
+              </type>
+            </variable>
+            <variable name="LevelLow">
+              <type>
+                <REAL />
+              </type>
+              <initialValue>
+                <simpleValue value="55.0" />
+              </initialValue>
+            </variable>
+            <variable name="LevelHigh">
+              <type>
+                <REAL />
+              </type>
+              <initialValue>
+                <simpleValue value="65.0" />
+              </initialValue>
+            </variable>
+            <variable name="StartLevel">
+              <type>
+                <REAL />
+              </type>
+              <initialValue>
+                <simpleValue value="60.0" />
+              </initialValue>
+            </variable>
+            <variable name="TemperatureSet">
+              <type>
+                <REAL />
+              </type>
+              <initialValue>
+                <simpleValue value="104.0" />
+              </initialValue>
+            </variable>
+            <variable name="TemperatureBand">
+              <type>
+                <REAL />
+              </type>
+              <initialValue>
+                <simpleValue value="1.0" />
+              </initialValue>
+            </variable>
+            <variable name="PressureSet">
+              <type>
+                <REAL />
+              </type>
+              <initialValue>
+                <simpleValue value="0.20" />
+              </initialValue>
+            </variable>
+            <variable name="PressureBand">
+              <type>
+                <REAL />
+              </type>
+              <initialValue>
+                <simpleValue value="0.03" />
+              </initialValue>
+            </variable>
+            <variable name="CoolingOn">
+              <type>
+                <REAL />
+              </type>
+              <initialValue>
+                <simpleValue value="110.0" />
+              </initialValue>
+            </variable>
+            <variable name="CoolingOff">
+              <type>
+                <REAL />
+              </type>
+              <initialValue>
+                <simpleValue value="107.0" />
+              </initialValue>
+            </variable>
+            <variable name="SecondLevelOn">
+              <type>
+                <REAL />
+              </type>
+              <initialValue>
+                <simpleValue value="75.0" />
+              </initialValue>
+            </variable>
+            <variable name="SecondLevelOff">
+              <type>
+                <REAL />
+              </type>
+              <initialValue>
+                <simpleValue value="70.0" />
+              </initialValue>
+            </variable>
+            <variable name="DrainStopLevel">
+              <type>
+                <REAL />
+              </type>
+              <initialValue>
+                <simpleValue value="5.0" />
+              </initialValue>
+            </variable>
+            <variable name="ValvePulse">
+              <type>
+                <TIME />
+              </type>
+              <initialValue>
+                <simpleValue value="T#1s" />
+              </initialValue>
+            </variable>
+            <variable name="ValvePause">
+              <type>
+                <TIME />
+              </type>
+              <initialValue>
+                <simpleValue value="T#4s" />
+              </initialValue>
+            </variable>
+          </inputVars>
+          <outputVars>
+            <variable name="State">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="HeatClose">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="HeatOpen">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="Feed1">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="Feed2">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="Drain">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="StationEnabled">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="SecondLevel">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="Cooling">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="Ready">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+          </outputVars>
+          <localVars>
+            <variable name="FeedDemand">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="CoolingDemand">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="SecondLevelDemand">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="HeatDemand">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="ActiveDirection">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="DesiredDirection">
+              <type>
+                <INT />
+              </type>
+            </variable>
+            <variable name="PulseActive">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="PauseActive">
+              <type>
+                <BOOL />
+              </type>
+            </variable>
+            <variable name="PulseTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+            <variable name="PauseTimer">
+              <type>
+                <derived name="TON" />
+              </type>
+            </variable>
+          </localVars>
+        </interface>
+        <body>
+          <ST>
+            <xhtml:xhtml>(* Stop takes precedence; Enable is a maintained operating request. *)
+IF Stop OR NOT Enable THEN
+    IF DrainRequest THEN State := 40; ELSE State := 0; END_IF;
+ELSIF State = 0 OR State = 40 THEN
+    State := 10;
+END_IF;
+
+IF State = 10 AND LevelPct &gt;= StartLevel THEN State := 20; END_IF;
+IF State = 20 AND TemperatureC &gt;= TemperatureSet - TemperatureBand
+    AND PressureBar &gt;= PressureSet - PressureBand THEN
+    State := 30;
+END_IF;
+
+StationEnabled := (State = 10) OR (State = 20) OR (State = 30);
+Ready := (State = 30) AND (LevelPct &gt;= LevelLow)
+    AND (TemperatureC &gt;= TemperatureSet - TemperatureBand)
+    AND (PressureBar &gt;= PressureSet - PressureBand);
+
+(* Level hysteresis with a fixed first feed stage. *)
+IF NOT StationEnabled THEN
+    FeedDemand := FALSE;
+ELSIF State = 10 THEN
+    FeedDemand := LevelPct &lt; StartLevel;
+ELSIF LevelPct &lt;= LevelLow THEN
+    FeedDemand := TRUE;
+ELSIF LevelPct &gt;= LevelHigh THEN
+    FeedDemand := FALSE;
+END_IF;
+(* Two feed stages: second opens only below the low threshold by 10 %. *)
+Feed1 := StationEnabled AND FeedDemand;
+Feed2 := Feed1 AND (LevelPct &lt; LevelLow - 10.0);
+
+IF TemperatureC &gt;= CoolingOn THEN CoolingDemand := TRUE;
+ELSIF TemperatureC &lt;= CoolingOff THEN CoolingDemand := FALSE;
+END_IF;
+Cooling := StationEnabled AND CoolingEnable AND CoolingDemand;
+
+IF LevelPct &gt;= SecondLevelOn THEN SecondLevelDemand := TRUE;
+ELSIF LevelPct &lt;= SecondLevelOff THEN SecondLevelDemand := FALSE;
+END_IF;
+SecondLevel := SecondLevelDemand;
+Drain := (State = 40) AND (LevelPct &gt; DrainStopLevel);
+
+(* Temperature control with a pressure ceiling; pressure alone cannot demand heat. *)
+IF NOT ((State = 20) OR (State = 30)) OR Cooling THEN
+    HeatDemand := -1;
+ELSIF TemperatureC &gt;= TemperatureSet + TemperatureBand
+    OR PressureBar &gt;= PressureSet + PressureBand THEN
+    HeatDemand := -1;
+ELSIF TemperatureC &lt;= TemperatureSet - TemperatureBand
+    AND PressureBar &lt;= PressureSet THEN
+    HeatDemand := 1;
+ELSE
+    HeatDemand := 0;
+END_IF;
+DesiredDirection := HeatDemand;
+
+(* Fixed jog pulses, separated by a pause. Reversals first remove both outputs. *)
+IF PulseActive AND DesiredDirection &lt;&gt; ActiveDirection THEN
+    PulseActive := FALSE;
+    PauseActive := TRUE;
+END_IF;
+PulseTimer(IN := PulseActive, PT := ValvePulse);
+PauseTimer(IN := PauseActive, PT := ValvePause);
+IF PulseTimer.Q THEN
+    PulseActive := FALSE;
+    PauseActive := TRUE;
+END_IF;
+IF PauseTimer.Q THEN PauseActive := FALSE; END_IF;
+IF NOT PulseActive AND NOT PauseActive AND DesiredDirection &lt;&gt; 0 THEN
+    ActiveDirection := DesiredDirection;
+    PulseActive := TRUE;
+END_IF;
+HeatOpen := PulseActive AND (ActiveDirection = 1);
+HeatClose := PulseActive AND (ActiveDirection = -1);</xhtml:xhtml>
+          </ST>
+        </body>
+      </pou>
+    </pous>
+  </types>
+  <instances />
+</project>
